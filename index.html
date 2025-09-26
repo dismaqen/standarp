@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="76dd8e8109697f6c28e39fbb5c42b8cda112237d" content="76dd8e8109697f6c28e39fbb5c42b8cda112237d" />
+  <title>Mini Game Berhadiah</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      text-align: center;
+      padding: 50px;
+    }
+    .game-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #333;
+    }
+    input {
+      padding: 8px;
+      width: 60px;
+      text-align: center;
+      font-size: 1.2em;
+    }
+    button {
+      padding: 10px 15px;
+      margin-top: 10px;
+      background: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .message {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="game-box">
+    <h1>🎮 Mini Game Berhadiah</h1>
+    <p>Tebak angka antara <strong>1</strong> sampai <strong>10</strong>!</p>
+    <input type="number" id="guess" min="1" max="10" />
+    <br>
+    <button onclick="checkGuess()">Tebak</button>
+    <div class="message" id="message"></div>
+  </div>
+
+  <script>
+    const hadiah = "🎁 Selamat! Kamu menang hadiah spesial!";
+    const angkaBenar = Math.floor(Math.random() * 10) + 1;
+
+    function checkGuess() {
+      const userGuess = parseInt(document.getElementById("guess").value);
+      const message = document.getElementById("message");
+
+      if (isNaN(userGuess)) {
+        message.textContent = "Masukkan angka dulu!";
+        message.style.color = "red";
+        return;
+      }
+
+      if (userGuess === angkaBenar) {
+        message.textContent = hadiah;
+        message.style.color = "green";
+        alert(hadiah);
+      } else {
+        message.textContent = "❌ Salah! Coba lagi...";
+        message.style.color = "red";
+      }
+    }
+  </script>
+
+</body>
+</html>
